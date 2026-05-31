@@ -28,9 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Lotto Logic ---
   const generateLottoNumbers = (includeBonus) => {
     const numbers = Array.from({ length: 45 }, (_, i) => i + 1);
-    const shuffled = numbers.sort(() => Math.random() - 0.5);
-    const selected = shuffled.slice(0, includeBonus ? 7 : 6);
     
+    // Fisher-Yates Shuffle for better randomness
+    for (let i = numbers.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+    }
+
+    const selected = numbers.slice(0, includeBonus ? 7 : 6);
     const mainNumbers = selected.slice(0, 6).sort((a, b) => a - b);
     const bonusNumber = includeBonus ? selected[6] : null;
 
