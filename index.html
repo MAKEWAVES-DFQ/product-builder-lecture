@@ -1,14 +1,48 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>Lotto Generator</title>
   <link href='/style.css' rel='stylesheet'>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
+  <div class="container">
+    <header>
+      <h1>로또 번호 추첨기</h1>
+      <button id="theme-toggle" class="btn-icon" aria-label="테마 변경">
+        <span class="theme-icon">🌓</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="controls">
+        <div class="bonus-toggle-wrapper">
+          <label class="switch">
+            <input type="checkbox" id="bonus-toggle">
+            <span class="slider round"></span>
+          </label>
+          <span>보너스 번호 포함</span>
+        </div>
+        <button id="draw-btn" class="btn-primary">번호 추첨하기</button>
+      </section>
+
+      <section id="animation-container" class="animation-container hidden">
+        <div class="machine">
+          <div class="ball ball-1"></div>
+          <div class="ball ball-2"></div>
+          <div class="ball ball-3"></div>
+          <div class="ball ball-4"></div>
+          <div class="ball ball-5"></div>
+        </div>
+        <p class="status-text">번호를 추첨 중입니다...</p>
+      </section>
+
+      <section id="results-container" class="results-container">
+        <!-- 5 sets of results will be injected here -->
+      </section>
+    </main>
+  </div>
   <script defer type="text/javascript" src="/main.js"></script>
 </body>
 </html>
